@@ -68,7 +68,7 @@ class ProgrammableOptimizer(object):
                 continue
             for param in group['params']:
                 if param.grad is not None:
-                    param.data.sub_(decay)
+                    param.data.sub_(decay,param.data)
 
     def get_param(self, key):
         return np.array([pg[key] for pg in self.optim.param_groups])
